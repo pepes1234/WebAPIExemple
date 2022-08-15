@@ -5,16 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 public class CpfController : ControllerBase
 {
     [HttpGet("validate/{cpf}")]
-    public object Validate(
-        [FromServices]CpfService cpfService,
-        string cpf)
+    public object Validate([FromServices]CpfService cpfService, string cpf)
     {
-        throw new NotImplementedException();
+        return cpfService.getValidationDigits(cpf);
     }
 
     [HttpGet("generate")]
-    public object Generate(
-        [FromServices]CpfService cpfService
+    public object Generate([FromServices]CpfService cpfService
     )
     {
         throw new NotImplementedException();
