@@ -8,11 +8,31 @@ public class CpfService
 
     public bool Validate(string cpf)
     {
-        throw new NotImplementedException();
+        string cpf9dgt = "";
+        string last2numbers;
+        bool result = false;
+        for(int i = 0; i<=10; i++)
+        {
+            if(i >= 9)
+            {
+                break;
+            }
+            cpf9dgt += cpf.Substring(i, 1);
+        }
+        last2numbers = getValidationDigits(cpf9dgt);
+        if(last2numbers == cpf.Substring(9))
+        {
+            return result = true;
+        }
+        else
+        {
+            return result = false;
+        }
     }
 
     public string Generate()
     {
+        int cpf;
         throw new NotImplementedException();
     }
 
@@ -29,20 +49,20 @@ public class CpfService
         }
         firstcpfnumber %= 11;
         string strfirstcpfnumber = firstcpfnumber.ToString();
-        strfirstcpfnumber = strfirstcpfnumber.Substring(strfirstcpfnumber.Length);
+        strfirstcpfnumber = strfirstcpfnumber.Substring(strfirstcpfnumber.Length - 1);
 
         int secondcpfnumber = 0;
         for (int i = 0; i <= 8; i++)
         {
             int cpfmultiplicado = 0;
             cpfmultiplicado = int.Parse(cpf9digits.Substring(i, 1));
-            Console.WriteLine(cpf9digits.Substring(i, 1));
             cpfmultiplicado *= i;
             secondcpfnumber += cpfmultiplicado;
         }
         secondcpfnumber += firstcpfnumber * 9;
+        secondcpfnumber %= 11;
         string strsecondcpfnumber = secondcpfnumber.ToString();
-        strsecondcpfnumber = strsecondcpfnumber.Substring(strfirstcpfnumber.Length);
+        strsecondcpfnumber = strsecondcpfnumber.Substring(strsecondcpfnumber.Length - 1);
 
         return strfirstcpfnumber + strsecondcpfnumber;
     }
