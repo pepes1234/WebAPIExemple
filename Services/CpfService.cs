@@ -8,6 +8,7 @@ public class CpfService
 
     public bool Validate(string cpf)
     {
+        
         string cpf9dgt = "";
         string last2numbers;
         bool result = false;
@@ -22,18 +23,24 @@ public class CpfService
         last2numbers = getValidationDigits(cpf9dgt);
         if(last2numbers == cpf.Substring(9))
         {
-            return result = true;
+            result = true;
+            return result;
         }
         else
         {
-            return result = false;
+            result = false;
+            return result;
         }
     }
 
-    public string Generate()
+    public string Generate()    
     {
-        int cpf;
-        throw new NotImplementedException();
+        int cpfincomplete;
+        string strcpfincomplete;
+        cpfincomplete = rand.Next(100000000, 999999999);
+        strcpfincomplete = cpfincomplete.ToString();
+        strcpfincomplete += getValidationDigits(strcpfincomplete);
+        return Convert.ToInt64(strcpfincomplete).ToString(@"000\.000\.000\-00");
     }
 
     // detalhes em: https://www.calculadorafacil.com.br/computacao/validar-cpf
