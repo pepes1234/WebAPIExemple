@@ -55,7 +55,8 @@ public class CpfController : ControllerBase
         }
 
         return new {
-            status = "fail"
+            status = "fail",
+            message = "Erro desconhecido"
         };
         
     }
