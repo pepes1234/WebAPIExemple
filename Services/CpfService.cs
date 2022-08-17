@@ -44,7 +44,7 @@ public class CpfService
     }
 
     // detalhes em: https://www.calculadorafacil.com.br/computacao/validar-cpf
-    public string getValidationDigits(string cpf9digits)
+    private string getValidationDigits(string cpf9digits)
     {
         int firstcpfnumber = 0;
         for (int i = 1; i <= 9; i++)
@@ -73,4 +73,5 @@ public class CpfService
 
         return strfirstcpfnumber + strsecondcpfnumber;
     }
+    
 }

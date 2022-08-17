@@ -16,6 +16,8 @@ public class CpfController : ControllerBase
         long cpflong;
         if(long.TryParse(cpf, out cpflong) == false)
         {
+            /*com mais de 19 digitos, mesmo sendo numeros, retorna esse erro em vez de retornar o erro "cpf com quantidade de digitos
+            insuficiente, de 2 ifs abaixo*/
             return new{
                 status = "Fail",
                 message = "Cpf não pode conter caracteres especiais ou letras."
