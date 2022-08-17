@@ -68,4 +68,11 @@ public class CpfController : ControllerBase
     {
         return cpfService.Generate();
     }
-}
+    [HttpGet("testcpf/{numbertest}")]
+    public object TestCpf([FromServices]CpfService cpfService, int numbertest)
+    {
+        return new{
+            result = cpfService.TestCpf(numbertest),
+        };
+    }
+}   

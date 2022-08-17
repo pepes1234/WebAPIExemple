@@ -73,5 +73,23 @@ public class CpfService
 
         return strfirstcpfnumber + strsecondcpfnumber;
     }
+    public string TestCpf(int numberTest)
+    {
+        int InvalidTest = 0;
+        int ValidTest = 0;
+        for(int i = 0; i<numberTest; i++)
+        {
+            string randomcpf = Generate();
+            if(Validate(randomcpf) == false)
+            {
+                InvalidTest++;
+            }
+            else
+            {
+                ValidTest++;
+            }
+        }
+        return "Testes Corretos:" + ValidTest.ToString() + "Testes Incorretos:" + InvalidTest.ToString();
+    }
     
 }
