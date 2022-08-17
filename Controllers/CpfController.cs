@@ -7,7 +7,6 @@ public class CpfController : ControllerBase
     [HttpGet("validate/{cpf}")]
     public object Validate([FromServices]CpfService cpfService, string cpf)
     {
-        
         cpf = cpf.Replace(".", string.Empty).Replace("-", string.Empty).Replace("/", string.Empty)
         .Replace(" ", string.Empty).Replace(",", string.Empty).Replace(";", string.Empty).Replace("=", string.Empty)
         .Replace("|", string.Empty);
@@ -71,8 +70,6 @@ public class CpfController : ControllerBase
     [HttpGet("testcpf/{numbertest}")]
     public object TestCpf([FromServices]CpfService cpfService, int numbertest)
     {
-        return new{
-            result = cpfService.TestCpf(numbertest),
-        };
+        return cpfService.TestCpf(numbertest);
     }
 }   

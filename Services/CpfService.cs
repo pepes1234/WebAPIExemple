@@ -7,8 +7,11 @@ public class CpfService
     Random rand;
 
     public bool Validate(string cpf)
-    {
-        
+    {   
+        cpf = cpf.Replace(".", string.Empty).Replace("-", string.Empty).Replace("/", string.Empty)
+        .Replace(" ", string.Empty).Replace(",", string.Empty).Replace(";", string.Empty).Replace("=", string.Empty)
+        .Replace("|", string.Empty);
+
         string cpf9dgt = "";
         string last2numbers;
         bool result = false;
@@ -89,7 +92,7 @@ public class CpfService
                 ValidTest++;
             }
         }
-        return "Testes Corretos:" + ValidTest.ToString() + "Testes Incorretos:" + InvalidTest.ToString();
+        return "Testes Corretos:" + ValidTest.ToString() + " Testes Incorretos:" + InvalidTest.ToString();
     }
     
 }
